@@ -3,3 +3,5 @@ This is from local machine
 This line is from Git
 
 This is second line from my machine
+
+This is the third line from my machine.
