@@ -2,5 +2,3 @@ This is a line added to local file from local machine.
 
 
 I need this line
-
-This is third line
