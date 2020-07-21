@@ -1,0 +1,80 @@
+class FruitInfo:
+    __fruit_name_list  = ['Apple', 'Guava', 'Orange', 'Grape', 'Sweet Lime']
+    __fruit_price_list = [200, 80, 70, 110, 60]
+    
+    @staticmethod
+    def get_fruit_name_list():
+        return FruitInfo.__fruit_name_list
+    
+    @staticmethod
+    def get_fruit_price_list():
+        return FruitInfo.__fruit_price_list
+
+    @staticmethod
+    def get_fruit_price(fruit_name):
+        try:
+            index = FruitInfo.__fruit_name_list.index(fruit_name)
+            return FruitInfo.__fruit_price_list[index]
+        except ValueError as e:
+            return -1
+
+
+class Purchase:
+    counter = 101
+    def __init__(self, customer, fruit_name, quantity):
+        self.purchase_id = ""
+        self.customer = customer
+        self.fruit_name = fruit_name
+        self.quantity = quantity
+    
+    def get_purchase_id(self):
+        self.purchase_id = "P" + str(Purchase.counter)
+        Purchase.counter += 1
+        return self.purchase_id
+    
+    def get_customer(self):
+        return self.customer
+    
+    def get_quantity(self):
+        return self.quantity
+    
+    def calculate_price(self):
+        price = 0
+        final_price = 0
+        max_fruit_price = max(FruitInfo.get_fruit_price_list())
+        min_fruit_price = min(FruitInfo.get_fruit_price_list())
+        fruit_price = FruitInfo.get_fruit_price(self.fruit_name)
+        if fruit_price == -1:
+            return -1
+        if fruit_price == max_fruit_price and self.quantity > 1:
+            price = fruit_price * self.quantity 
+            final_price = price - (price * .02)
+            return final_price
+        else:
+            final_price == fruit_price * self.quantity
+            return final_price
+        
+        if fruit_price == min_fruit_price and self.quantity > 5:
+            price = fruit_price * self.quantity 
+            final_price = price - (price * .05)
+            return final_price
+        else:
+            final_price == fruit_price * self.quantity
+            return final_price
+        
+class Customer:
+    def __init__(self, customer_name, customer_type):
+        self.customer_name = customer_name
+        self.customer_type = customer_type
+    
+    def get_customer_name(self):
+        return self.customer_name
+    
+    def get_customer_type(self):
+        return self.customer_type
+    
+    
+c1 = Customer('Jaydeep', 'Wholesale')
+p1 = Purchase(c1,'Raddish', 5)
+print(p1.calculate_price())
+#print(FruitInfo.get_fruit_price('Apple'))
