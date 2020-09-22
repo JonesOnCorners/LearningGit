@@ -5,3 +5,9 @@ This line is from Git
 This is second line from my machine
 
 This is the third line from my machine.
+
+22-09-2020 -  Added first commit
+
+22-09-2020 -  Added second commit
+
+22-09-2020 -  Added third commit
